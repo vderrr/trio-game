@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.screen {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+button {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}
+
+button:active {
+    background-color: #0056b3;
+}
+
+#fail-btn {
+    background-color: #dc3545;
+}
+
+#success-btn {
+    background-color: #28a745;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card {
+    background: #fff3cd;
+    padding: 40px 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px dashed #ffc107;
+    margin: 20px 0;
+}
+
+#timeout-screen {
+    background-color: #ffc107;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#timeout-screen button {
+    background-color: #333;
+    margin-top: 20px;
+}

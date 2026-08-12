@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гра: Корова</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .settings-block { margin-bottom: 15px; }
+        .settings-block label { display: block; margin: 8px 0; cursor: pointer; font-size: 16px; }
+        .scrollable-list { max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 8px; background-color: #f9f9f9; }
+        .total-score { text-align: center; font-size: 18px; font-weight: bold; margin-bottom: 15px; padding: 10px; background-color: #e2e3e5; border-radius: 8px; }
+        .input-field { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
+        #reset-btn { background-color: #dc3545; margin-top: 10px; }
+        #skip-btn { background-color: #ffc107; color: #333; margin-top: 10px; border: none; padding: 15px; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; }
+        .controls { display: flex; flex-direction: column; gap: 10px; }
+        
+        /* Стиль для назви категорії */
+        #category-display { color: #666; font-size: 16px; margin-bottom: 10px; font-weight: normal; }
+    </style>
+</head>
+<body>
+    <!-- Екран налаштувань -->
+    <div id="setup-screen" class="screen active">
+        <h1>Налаштування гри</h1>
+        
+        <div class="total-score">
+            Загальний рахунок: <span id="total-score-display">0</span>
+        </div>
+
+        <div class="settings-block">
+            <h3>Спосіб пояснення:</h3>
+            <div id="actions-container">
+                <label><input type="checkbox" value="Показати" checked> Показати</label>
+                <label><input type="checkbox" value="Намалювати" checked> Намалювати</label>
+                <label><input type="checkbox" value="Пояснити словами" checked> Пояснити словами</label>
+            </div>
+        </div>
+        
+        <div class="settings-block">
+            <h3>Оберіть категорії:</h3>
+            <div id="categories-container" class="scrollable-list"></div>
+        </div>
+
+        <div class="settings-block">
+            <h3>Час на раунд (секунди):</h3>
+            <input type="number" id="round-time" class="input-field" value="60" min="10" max="120">
+        </div>
+
+        <button id="start-btn">Почати раунд</button>
+        <button id="reset-btn">Завершити гру (скинути бали)</button>
+    </div>
+
+    <!-- Екран гри -->
+    <div id="game-screen" class="screen hidden">
+        <div class="header">
+            <div class="score">Бали: <span id="score-display">0</span></div>
+            <div class="timer">Час: <span id="timer-display">60</span></div>
+        </div>
+        
+        <div class="card">
+            <!-- Сюди буде виводитись назва категорії -->
+            <h3 id="category-display">Категорія</h3>
+            <h2 id="action-display">Дія</h2>
+            <h1 id="word-display">Слово</h1>
+        </div>
+
+        <div class="controls">
+            <button id="success-btn">Пояснив (+10)</button>
+            <button id="skip-btn">Це слово вже було / Змінити (0)</button>
+            <button id="fail-btn">Не можу (-5)</button>
+        </div>
+    </div>
+
+    <!-- Екран завершення часу -->
+    <div id="timeout-screen" class="screen hidden">
+        <h2>Ваш час вичерпався!</h2>
+        <p>Черга наступного гравця.</p>
+        <button id="continue-btn">Продовжити</button>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
